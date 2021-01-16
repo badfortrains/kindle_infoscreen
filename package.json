@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack serve --mode=development --hot --inline",
     "build": "webpack -p --config webpack.config.prod.js",
     "lint": "eslint src/*.js ./*.js",
     "lint-fix": "eslint --fix src/*.js ./*.js"
@@ -20,7 +20,7 @@
     "html-webpack-plugin": "3.2.0",
     "json3": "^3.3.3",
     "mithril": "1.1.7",
-    "webpack": "3.11.0"
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -36,6 +36,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-inline-source-plugin": "0.0.10",
     "style-loader": "^0.19.1",
-    "webpack-dev-server": "^3.1.11"
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.2"
   }
 }
