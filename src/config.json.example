@@ -1,7 +1,7 @@
 {
   "token": "askjhdfkshdkf",
   "wifi": "data:image/png;base64,<image data>",
-  "address": "http://192.168.86.35:8123",
+  "address": "",
   "groupname": "on_kindle",
   "refreshinterval": 10,
   "media_sources": {

@@ -1,7 +1,4 @@
 /* eslint-disable no-undef */
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-
 const publicPath = '/dist';
 
 const config = {
@@ -26,28 +23,25 @@ const config = {
 
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true, // don't fail the build for linting errors
-        },
-      },
+      // {
+      //   test: /\.js$/,
+      //   enforce: 'pre',
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     emitWarning: true, // don't fail the build for linting errors
+      //   },
+      // },
       {
         test: /\.ya?ml$/,
         use: 'yaml-loader',
       },
       {
-        test: /\.js$/, // Check for all js files
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: { presets: ['env'] },
-          },
-        ],
+            test: /\.js$/,
+            exclude: /\/node_modules\//,
+            use: {
+                loader: 'babel-loader'
+            }
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -76,13 +70,6 @@ const config = {
 
   devtool: 'eval-source-map', // Default development sourcemap
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      inlineSource: '.(js|css)$', // embed all javascript and css inline
-      title: 'home control',
-    }),
-    new HtmlWebpackInlineSourcePlugin(),
-  ],
 };
 
 module.exports = config;

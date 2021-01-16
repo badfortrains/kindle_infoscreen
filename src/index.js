@@ -99,9 +99,9 @@ class MediaPlayer {
       [
         m('div', name),
         attributes.entity_picture &&
-          m('img', {
-            src: address + attributes.entity_picture,
-          }),
+        m('img', {
+          src: address + attributes.entity_picture,
+        }),
         m(
           '.media_player_sources',
           source_list.map(function (source) {
@@ -137,28 +137,26 @@ class Sensor {
 
 class Switch {
   view({ attrs: { attributes, entity_id, state } }) {
-    var name = attributes.friendly_name || entity_id;
-    return m(
-      '.switch',
-      {
-        style: {
-          'background-color': state == 'on' ? 'black' : 'white',
-          color: state == 'on' ? 'white' : 'black',
-        },
-        onclick: () => {
-          m.request({
-            method: 'POST',
-            url: `${address}/api/services/switch/${state == 'on' ? 'turn_off' : 'turn_on'}`,
-            headers: { authorization: 'Bearer ' + token },
-            data: { entity_id: entity_id },
-          });
-          Entities.switches.find((item) => item.entity_id === entity_id).state =
-            state == 'on' ? 'off' : 'on';
-          m.redraw();
-        },
-      },
-      name
-    );
+    const name = attributes.friendly_name || entity_id;
+    const switchStyle = {
+      'background-color': state == 'on' ? 'black' : 'white',
+      color: state == 'on' ? 'white' : 'black',
+    };
+    const onclick = () => {
+      m.request({
+        method: 'POST',
+        url: `${address}/api/services/switch/${state == 'on' ? 'turn_off' : 'turn_on'}`,
+        headers: { authorization: 'Bearer ' + token },
+        data: { entity_id: entity_id },
+      });
+      Entities.switches.find((item) => item.entity_id === entity_id).state =
+        state == 'on' ? 'off' : 'on';
+      m.redraw();
+    };
+    return <div class="switch" style={switchStyle} onclick={onclick}>
+      {name}
+      <div class="triangle-up"></div>
+    </div>
   }
 }
 
