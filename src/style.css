@@ -75,3 +75,9 @@
   border-right: 25px solid transparent;
   border-bottom: 50px solid #555;
 }
+
+.m-icon {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
