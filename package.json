@@ -16,6 +16,8 @@
   },
   "author": "Hermann Blum",
   "dependencies": {
+    "@mdi/font": "^5.9.55",
+    "@mdi/js": "^5.9.55",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.8.2",
     "es5-shim": "^4.5.15",

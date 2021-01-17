@@ -1,7 +1,10 @@
 import m from 'mithril';
 import { token, wifi, address, media_sources, groupname, refreshinterval } from './config.json';
 import './style.css';
+import { mdiAccount } from '@mdi/js';
 
+
+setTimeout(() => document.querySelector('svg path').setAttribute('d', mdiAccount), 500);
 const errdiv = document.createElement('div');
 const container = document.createElement('div');
 
@@ -14,6 +17,8 @@ var Entities = {
   scenes: [],
   sensors: [],
   media_players: [],
+  climate: [],
+  weather: [],
   loadEntities: function () {
     // document.getElementById('error').textContent = 'loading...';
     m.request({
@@ -54,6 +59,18 @@ var Entities = {
         .filter((entity_id) => entity_id.startsWith('media_player'))
         .forEach((entity_id) => {
           Entities.media_players.push(result.filter((item) => item.entity_id == entity_id)[0]);
+        });
+      Entities.climate = [];
+      entities
+        .filter((entity_id) => entity_id.startsWith('climate'))
+        .forEach((entity_id) => {
+          Entities.climate.push(result.filter((item) => item.entity_id == entity_id)[0]);
+        });
+      Entities.weather = [];
+      entities
+        .filter((entity_id) => entity_id.startsWith('weather'))
+        .forEach((entity_id) => {
+          Entities.weather.push(result.filter((item) => item.entity_id == entity_id)[0]);
         });
       // document.getElementById('error').textContent = '';
     });
@@ -159,6 +176,12 @@ class Switch {
     </div>
   }
 }
+
+// class Climate {
+//   view({ attrs: { attributes, entity_id, state } }) {
+//     const outside = 
+//   }
+// }
 
 class Light {
   view({ attrs: { attributes, entity_id, state } }) {
