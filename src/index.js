@@ -1,10 +1,8 @@
 import m from 'mithril';
 import { token, wifi, address, media_sources, groupname, refreshinterval } from './config.json';
 import './style.css';
-import { mdiAccount } from '@mdi/js';
-
-
-setTimeout(() => document.querySelector('svg path').setAttribute('d', mdiAccount), 500);
+import { Icon } from './icon';
+import { Thermostat } from './thermostat'
 const errdiv = document.createElement('div');
 const container = document.createElement('div');
 
@@ -172,16 +170,9 @@ class Switch {
     };
     return <div class="switch" style={switchStyle} onclick={onclick}>
       {name}
-      <div class="triangle-up"></div>
     </div>
   }
 }
-
-// class Climate {
-//   view({ attrs: { attributes, entity_id, state } }) {
-//     const outside = 
-//   }
-// }
 
 class Light {
   view({ attrs: { attributes, entity_id, state } }) {
@@ -271,19 +262,33 @@ class Layout {
     Entities.loadEntities();
   }
   view() {
-    return m('div', [
-      m(
-        '.div',
-        Entities.sensors.map((sensorData) => m(Sensor, sensorData))
-      ),
-      m('.switch-row', [
-        ...Entities.switches.map((switchData) => m(Switch, switchData)),
-        ...Entities.lights.map((lightData) => m(Light, lightData)),
-        ...Entities.scenes.map((sceneData) => m(Scene, sceneData)),
-      ]),
-      ...Entities.media_players.map((mediaPlayerData) => m(MediaPlayer, mediaPlayerData)),
-      wifi ? m(Overlay, { label: 'wifi' }, m('img.wifi', { src: wifi })) : '',
-    ]);
+    const weather = Entities.weather[0];
+    const climate = Entities.climate[0];
+
+    let thermostat = '';
+    if (weather && climate) {
+      thermostat = <Thermostat weatherEntity={weather} climateEntity={climate}></Thermostat>;
+    }
+
+    return <div>
+      <div class="thermostat">
+        {thermostat}
+      </div>
+      <div>
+        {
+          Entities.sensors.map((sensorData) => <Sensor {...sensorData}></Sensor>)
+        }
+      </div>
+      <div class="switch-row">
+        {Entities.switches.map((switchData) => <Switch {...switchData}></Switch>)}
+        {Entities.lights.map((lightData) => <Light {...lightData}></Light>)}
+        {Entities.scenes.map((sceneData) => <Scene {...sceneData}></Scene>)}
+      </div>
+      {Entities.media_players.map((mediaPlayerData) => <MediaPlayer {...mediaPlayerData}></MediaPlayer>)}
+      {wifi ? <Overlay label="wifi">
+        <img src={wifi}></img>
+      </Overlay> : ''}
+    </div>
   }
 }
 

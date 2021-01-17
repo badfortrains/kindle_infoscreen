@@ -1,3 +1,8 @@
+body {
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
 .switch-row {
   overflow: auto;
   width: 600px;
@@ -71,13 +76,97 @@
 .triangle-up {
   width: 0;
   height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #555;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #555;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #555;
 }
 
 .m-icon {
+  display: inline-block;
   width: 24px;
   height: 24px;
   line-height: 24px;
+}
+
+.m-icon-medium .m-icon {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.disabled .m-icon path {
+  fill: #b9b7b7;
+}
+
+.thermostat {
+  margin-top: 16px;
+  max-width: 600px;
+}
+
+.climate-inside,
+.climate-outside,
+.climate-target {
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+  vertical-align: top;
+}
+
+.climate-label {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.climate-temp {
+  font-size: 55px;
+  font-weight: 300;
+}
+
+.climate-inside {
+  padding-top: 59px;
+}
+.climate-inside .climate-temp {
+  font-size: 90px;
+  font-weight: 400;
+}
+
+.climate-outside .m-icon {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: inherit;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.climate-target button {
+  height: 80px;
+}
+
+.climate-temp-sub-label {
+  font-size: 18px;
+  text-transform: capitalize;
 }
