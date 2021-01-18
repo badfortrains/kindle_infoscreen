@@ -76,7 +76,7 @@ var Entities = {
 };
 
 class MediaPlayer {
-  select_source(entity_id, source) {
+  selectSource(entity_id, source) {
     if (source === 'Off') {
       m.request({
         method: 'POST',
@@ -96,49 +96,38 @@ class MediaPlayer {
   view({ attrs: { attributes, entity_id, state } }) {
     var name = attributes.friendly_name || entity_id;
     name = attributes.media_title || name;
-    var source_list = ['Off'];
+    var sourceList = ['Off'];
     // custom filter for now
     if (media_sources && media_sources[entity_id]) {
-      source_list = source_list.concat(media_sources[entity_id]);
+      sourceList = sourceList.concat(media_sources[entity_id]);
     } else {
-      source_list = source_list.concat(attributes.source_list);
+      sourceList = sourceList.concat(attributes.source_list);
     }
-    return m(
-      '.media_player',
-      {
-        style: {
-          'background-color': state == 'off' ? 'white' : 'black',
-          color: state == 'off' ? 'black' : 'white',
-        },
-      },
-      [
-        m('div', name),
-        attributes.entity_picture &&
-        m('img', {
-          src: address + attributes.entity_picture,
-        }),
-        m(
-          '.media_player_sources',
-          source_list.map(function (source) {
-            return m(
-              'div',
-              {
-                style: {
-                  'background-color': attributes.source == source ? 'black' : 'white',
-                  color: attributes.source == source ? 'white' : 'black',
-                  height: 170 / source_list.length + 'px',
-                  'line-height': 170 / source_list.length + 'px',
-                },
-                onclick: () => {
-                  MediaPlayer.select_source(entity_id, source);
-                },
-              },
-              source
-            );
-          })
-        ),
-      ]
-    );
+
+    const sourceElements = sourceList.map((source) => {
+      const style = {
+        'background-color': attributes.source == source ? 'black' : 'white',
+        'color': attributes.source == source ? 'white' : 'black',
+        'height': 170 / sourceList.length + 'px',
+        'line-height': 170 / sourceList.length + 'px',
+      };
+
+      return <div style={style} onclick={() => this.selectSource(entity_id, source)}>
+        {source}
+      </div>;
+    });
+
+    const mediaPlayerStyle = {
+      'background-color': state == 'off' ? 'white' : 'black',
+      'color': state == 'off' ? 'black' : 'white',
+    };
+    return <div class="media_player" style={mediaPlayerStyle}>
+      <div>{name}</div>
+      <img src={address + attributes.entity_picture}></img>
+      <div class="media_player_sources">
+        {sourceElements}
+      </div>
+    </div>
   }
 }
 
