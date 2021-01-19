@@ -5,7 +5,7 @@ import { Icon } from './icon';
 export class Thermostat {
     iconFromState(state) {
         switch (state) {
-            case 'clear - night':
+            case 'clear-night':
                 return 'weather-clear-night';
             case 'cloudy':
                 return 'weather-cloudy';

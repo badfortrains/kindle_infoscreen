@@ -20,7 +20,7 @@ export class Icon {
                 return mdiFire;
             case 'power':
                 return mdiPower;
-            case 'weater-clear-night':
+            case 'weather-clear-night':
                 return mdiWeatherNight;
             case 'weather-cloudy':
                 return mdiWeatherCloudy;
