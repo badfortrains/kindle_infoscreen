@@ -95,9 +95,15 @@ class MediaPlayer {
     }
   }
   view({ attrs: { attributes, entity_id, state, onBrowsePlaylists } }) {
-    var name = attributes.friendly_name || entity_id;
+    let name = attributes.friendly_name || entity_id;
     name = attributes.media_title || name;
-    var sourceList = ['Off'];
+    const artist = attributes.media_artist || '';
+
+    if (!attributes.media_title) {
+      state = 'off';
+    }
+
+    let sourceList = ['Off'];
     // custom filter for now
     if (media_sources && media_sources[entity_id]) {
       sourceList = sourceList.concat(media_sources[entity_id]);
@@ -105,29 +111,33 @@ class MediaPlayer {
       sourceList = sourceList.concat(attributes.source_list);
     }
 
-    const sourceElements = sourceList.map((source) => {
-      const style = {
-        'background-color': attributes.source == source ? 'black' : 'white',
-        'color': attributes.source == source ? 'white' : 'black',
-        'height': 170 / sourceList.length + 'px',
-        'line-height': 170 / sourceList.length + 'px',
-      };
+    const style = {
+      'background-color': state == 'off' ? 'black' : 'white',
+      'color': state == 'off' ? 'white' : 'black',
+      'height': '170px',
+      'line-height': '170px',
+    };
 
-      return <div style={style} onclick={() => this.selectSource(entity_id, source)}>
-        {source}
-      </div>;
-    });
+    const playlistButton = <div style={style} onclick={() => onBrowsePlaylists()}>
+      <div>Playlists</div>
+    </div>
 
     const mediaPlayerStyle = {
       'background-color': state == 'off' ? 'white' : 'black',
       'color': state == 'off' ? 'black' : 'white',
     };
     return <div class="media_player" style={mediaPlayerStyle}>
-      <div>{name}</div>
-      <img src={address + attributes.entity_picture}></img>
-      <button onclick={() => onBrowsePlaylists()}>Playlists</button>
-      <div class="media_player_sources">
-        {sourceElements}
+      {attributes.entity_picture ?
+        <img src={address + attributes.entity_picture}></img> :
+        ''
+      }
+      <div class="media_play_metadata">
+        <div class="media-player-song">{name}</div>
+        <div class="media-player-artist">{artist}</div>
+      </div>
+
+      <div class="media-play-playlist-section">
+        {playlistButton}
       </div>
     </div>
   }

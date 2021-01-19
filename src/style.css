@@ -1,6 +1,5 @@
 body {
   font-family: sans-serif;
-  overflow: hidden;
 }
 
 .switch-row {
@@ -44,19 +43,31 @@ body {
   margin: 20px 20px 40px 20px;
   padding: 5px 185px 5px 5px;
 }
-.media_player img {
-  height: 130px;
-  width: 130px;
+
+.media-player-metadata {
+  margin-left: 16px;
 }
-.media_player_sources {
+.media-player-artist {
+  font-size: 16px;
+}
+.media-player-song {
+  font-size: 22px;
+}
+.media_player img {
+  height: 140px;
+  width: 140px;
+  float: left;
+  margin-right: 16px;
+}
+
+.media-play-playlist-section {
   width: 180px;
   height: 170px;
   position: absolute;
   right: 0px;
   top: 0px;
-}
-.media_player_sources div {
-  padding-left: 5px;
+  font-size: 24px;
+  text-align: center;
 }
 
 .overlaybutton {
@@ -172,16 +183,20 @@ button:focus {
   text-transform: capitalize;
 }
 
+.playlist-item-first {
+  margin-right: 16px;
+}
+
 .playlist-item {
   position: relative;
   width: 260px;
   height: 200px;
   border: 1px solid gray;
-  margin-right: 16px;
   display: inline-block;
   margin-bottom: 16px;
   padding: 8px;
   overflow: hidden;
+  vertical-align: top;
 }
 
 .playlist-item img {

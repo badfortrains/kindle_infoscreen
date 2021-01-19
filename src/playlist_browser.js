@@ -33,13 +33,14 @@ export class PlaylistBrowser {
     view({ attrs: { onExit } }) {
         return <div>
             <div>
-                <button onclick={() => onExit()}>
+                <button class="m-icon-medium" onclick={() => onExit()}>
                     <Icon icon="arrow-left"></Icon>
                 </button>
             </div>
             {
-                playlistConfig.map((config) => {
-                    return <div class="playlist-item" onclick={() => this.playPlaylist(config.id)}>
+                playlistConfig.map((config, index) => {
+                    return <div class={index % 2 === 0 ? 'playlist-item-first playlist-item' : 'playlist-item'}
+                        onclick={() => this.playPlaylist(config.id)}>
                         <img src={config.icon}></img>
                         <img src={config.icon}></img>
                         <img src={config.icon}></img>

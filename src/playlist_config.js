@@ -16,7 +16,7 @@ export const playlistConfig = [
     },
     {
         id:'https://open.spotify.com/playlist/37i9dQZF1EMgS3xGrzVehB?si=U1TLzziOQsGSXxytJYVNwQ',
-        displayName: 'Top 20 songs',
+        displayName: 'Top 2020 songs',
         icon: 'dist/playlist_icons/svg/006-like.svg',
     },
     {
