@@ -1,6 +1,5 @@
 import m from 'mithril';
 import { token, wifi, address, media_sources, groupname, refreshinterval } from './config.json';
-import './style.css';
 import { Icon } from './icon';
 
 export class Thermostat {

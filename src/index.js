@@ -3,6 +3,7 @@ import { token, wifi, address, media_sources, groupname, refreshinterval } from 
 import './style.css';
 import { Icon } from './icon';
 import { Thermostat } from './thermostat'
+import { PlaylistBrowser } from './playlist_browser';
 const errdiv = document.createElement('div');
 const container = document.createElement('div');
 
@@ -93,7 +94,7 @@ class MediaPlayer {
       });
     }
   }
-  view({ attrs: { attributes, entity_id, state } }) {
+  view({ attrs: { attributes, entity_id, state, onBrowsePlaylists } }) {
     var name = attributes.friendly_name || entity_id;
     name = attributes.media_title || name;
     var sourceList = ['Off'];
@@ -124,6 +125,7 @@ class MediaPlayer {
     return <div class="media_player" style={mediaPlayerStyle}>
       <div>{name}</div>
       <img src={address + attributes.entity_picture}></img>
+      <button onclick={() => onBrowsePlaylists()}>Playlists</button>
       <div class="media_player_sources">
         {sourceElements}
       </div>
@@ -249,14 +251,28 @@ class Overlay {
 class Layout {
   oninit() {
     Entities.loadEntities();
+    this.showPlaylistBrowser = false;
   }
+
+  toggleShowPlaylists() {
+    this.showPlaylistBrowser = !this.showPlaylistBrowser;
+    m.redraw();
+  }
+
   view() {
     const weather = Entities.weather[0];
     const climate = Entities.climate[0];
+    const mediaPlayer = Entities.media_players[0];
 
     let thermostat = '';
     if (weather && climate) {
       thermostat = <Thermostat weatherEntity={weather} climateEntity={climate}></Thermostat>;
+    }
+
+    if (mediaPlayer && this.showPlaylistBrowser) {
+      return <div class="thermostat">
+        <PlaylistBrowser onExit={() => { this.toggleShowPlaylists() }} mediaPlayerId={mediaPlayer.entity_id}></PlaylistBrowser>
+      </div>
     }
 
     return <div>
@@ -273,11 +289,18 @@ class Layout {
         {Entities.lights.map((lightData) => <Light {...lightData}></Light>)}
         {Entities.scenes.map((sceneData) => <Scene {...sceneData}></Scene>)}
       </div>
-      {Entities.media_players.map((mediaPlayerData) => <MediaPlayer {...mediaPlayerData}></MediaPlayer>)}
-      {wifi ? <Overlay label="wifi">
-        <img src={wifi}></img>
-      </Overlay> : ''}
-    </div>
+      {
+        Entities.media_players.map((mediaPlayerData) =>
+          <MediaPlayer {...mediaPlayerData} onBrowsePlaylists={() => { this.toggleShowPlaylists() }}>
+          </MediaPlayer>
+        )
+      }
+      {
+        wifi ? <Overlay label="wifi">
+          <img src={wifi}></img>
+        </Overlay> : ''
+      }
+    </div >
   }
 }
 

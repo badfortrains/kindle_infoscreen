@@ -1,6 +1,7 @@
 import {
     mdiWeatherCloudy, mdiAlertDecagram, mdiFire, mdiPower, mdiWeatherNight, mdiWeatherFog, mdiWeatherHail, mdiWeatherLightning, mdiWeatherLightningRainy, mdiWeatherPartlyCloudy,
-    mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane
+    mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane,
+    mdiArrowLeft
 } from '@mdi/js';
 import m from 'mithril';
 
@@ -49,6 +50,8 @@ export class Icon {
                 return mdiWeatherWindyVariant;
             case 'weather-exceptional':
                 return mdiWeatherHurricane;
+            case 'arrow-left':
+                return mdiArrowLeft;
             default:
                 return mdiAlertDecagram
         }

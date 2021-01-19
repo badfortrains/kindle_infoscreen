@@ -156,6 +156,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: inherit;
+  color: inherit;
 }
 
 button:focus {
@@ -169,4 +170,29 @@ button:focus {
 .climate-temp-sub-label {
   font-size: 18px;
   text-transform: capitalize;
+}
+
+.playlist-item {
+  position: relative;
+  width: 260px;
+  height: 200px;
+  border: 1px solid gray;
+  margin-right: 16px;
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.playlist-item img {
+  padding-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+.playlist-item-title {
+  top: 44px;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
 }
