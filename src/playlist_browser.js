@@ -7,21 +7,12 @@ export class PlaylistBrowser {
     playPlaylist(playlistId) {
         m.request({
             method: 'POST',
-            url: `${address}/api/services/media_player/play_media`,
+            url: `${address}/api/services/spotcast/start`,
             headers: { authorization: 'Bearer ' + token },
             data: {
-                entity_id: this.mediaPlayerId,
-                media_content_id: playlistId,
-                media_content_type: 'playlist',
-            },
-        });
-        m.request({
-            method: 'POST',
-            url: `${address}/api/services/media_player/shuffle_set`,
-            headers: { authorization: 'Bearer ' + token },
-            data: {
-                entity_id: this.mediaPlayerId,
-                shuffle: true,
+                device_name: 'House group',
+                random_song: true,
+                uri: playlistId,
             },
         });
         this.onExit();
