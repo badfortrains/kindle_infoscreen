@@ -5,22 +5,38 @@ import {
     mdiTriangleOutline
 } from '@mdi/js';
 import m from 'mithril';
+import {WEATHER_ICON_MAP} from './weather_svg'
 
 export class Icon {
     view(vnode) {
-        const icon = this.getIcon(vnode.attrs.icon);
+        const iconName = vnode.attrs.icon;
+        const weatherIcon = WEATHER_ICON_MAP.get(iconName);
+        if (weatherIcon) {
+            return <div class="m-icon">
+            <svg viewBox="0 0 100 100" >
+                <path d={weatherIcon} />
+            </svg >
+        </div >
+        }
+        const icon = this.getIcon(iconName);
         return <div class="m-icon">
-            {icon === mdiAlertDecagram ? vnode.attrs.icon : ''}
+            {icon === mdiAlertDecagram ? iconName: ''}
             <svg viewBox="0 0 24 24" >
                 <path d={icon} />
             </svg >
         </div >
     }
 
+    getWeatherIcon(name) {
+
+    }
+
     getIcon(name) {
         switch (name) {
             case 'triangle-outline':
                 return mdiTriangleOutline;
+            case 'triangle-outline-flipped':
+                return 'M12,22L1,3H23M12,18L19.53,5H4.47';
             case 'arrow-up-bold-circle-outline':
                 return mdiArrowUpBoldCircleOutline;
             case 'arrow-down-bold-circle-outline':
