@@ -180,6 +180,7 @@ body {
 .climate-inside {
   padding-top: 59px;
   width: 150px;
+  padding-left: 50px;
 }
 .climate-inside .climate-temp {
   font-size: 90px;
@@ -189,6 +190,7 @@ body {
 
 .thermostat {
   position: relative;
+  margin-bottom: 24px;
 }
 
 .thermostat-status-bar {
@@ -226,8 +228,14 @@ button:focus {
   outline: 0;
 }
 
-.climate-target button {
+.climate-target button.temp-up {
   height: 80px;
+  position: relative;
+}
+
+.climate-target button.temp-up .m-icon {
+  position: absolute;
+  bottom: 5px;
 }
 
 .climate-temp-sub-label {
@@ -264,7 +272,12 @@ button:focus {
   position: relative;
 }
 
+.weather-forecast {
+  margin-bottom: 24px;
+}
+
 .forecast.center {
+  padding-left: 50px;
   width: 150px;
   position: relative;
 }

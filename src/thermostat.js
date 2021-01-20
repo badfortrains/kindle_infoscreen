@@ -64,13 +64,13 @@ export class Thermostat {
                </div>
             </div>
             <div class="climate-target float-right">
-                <button onclick={() => this.setTemp(climateEntity, 1)} class="m-icon-medium">
+                <button onclick={() => this.setTemp(climateEntity, 1)} class="m-icon-medium temp-up">
                     <Icon icon="arrow-up-bold-circle-outline"></Icon>
                 </button>
                 <div class="climate-label">set to</div>
                 <div class="climate-temp">{climateEntity.attributes.temperature}°</div>
                 <div class="climate-temp-sub-label">{heatState}</div>
-                <button onclick={() => this.setTemp(climateEntity, -1)} class="m-icon-medium">
+                <button onclick={() => this.setTemp(climateEntity, -1)} class="m-icon-medium temp-down">
                     <Icon icon="arrow-down-bold-circle-outline"></Icon>
                 </button>
             </div>
