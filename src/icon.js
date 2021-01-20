@@ -1,7 +1,8 @@
 import {
     mdiWeatherCloudy, mdiAlertDecagram, mdiFire, mdiPower, mdiWeatherNight, mdiWeatherFog, mdiWeatherHail, mdiWeatherLightning, mdiWeatherLightningRainy, mdiWeatherPartlyCloudy,
     mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane,
-    mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff, mdiArrowUpBoldCircleOutline, mdiArrowDownBoldCircleOutline
+    mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff, mdiArrowUpBoldCircleOutline, mdiArrowDownBoldCircleOutline,
+    mdiTriangleOutline
 } from '@mdi/js';
 import m from 'mithril';
 
@@ -18,6 +19,8 @@ export class Icon {
 
     getIcon(name) {
         switch (name) {
+            case 'triangle-outline':
+                return mdiTriangleOutline;
             case 'arrow-up-bold-circle-outline':
                 return mdiArrowUpBoldCircleOutline;
             case 'arrow-down-bold-circle-outline':
