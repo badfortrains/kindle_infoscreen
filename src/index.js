@@ -4,6 +4,7 @@ import './style.css';
 import { Icon } from './icon';
 import { Thermostat } from './thermostat'
 import { PlaylistBrowser } from './playlist_browser';
+import { WeatherForcast } from './weather_forcast';
 const errdiv = document.createElement('div');
 const container = document.createElement('div');
 
@@ -111,14 +112,7 @@ class MediaPlayer {
       sourceList = sourceList.concat(attributes.source_list);
     }
 
-    const style = {
-      'background-color': state == 'off' ? 'black' : 'white',
-      'color': state == 'off' ? 'white' : 'black',
-      'height': '170px',
-      'line-height': '170px',
-    };
-
-    const playlistButton = <div style={style} onclick={() => onBrowsePlaylists()}>
+    const playlistButton = <div class="playlist-button" onclick={() => onBrowsePlaylists()}>
       <div>Playlists</div>
     </div>
 
@@ -136,7 +130,7 @@ class MediaPlayer {
         <div class="media-player-artist">{artist}</div>
       </div>
 
-      <div class="media-play-playlist-section">
+      <div class={state == 'off' ? 'media-play-playlist-section inverted' : 'media-play-playlist-section not-inverted'} >
         {playlistButton}
       </div>
     </div>
@@ -163,9 +157,9 @@ class Switch {
       });
       Entities.switches.find((item) => item.entity_id === entity_id).state =
         state == 'on' ? 'off' : 'on';
-      // Clear icon since we don't know what the toggled icon is and this way it will update
-      // once we get the new state.
-      attributes.icon = '';
+      // // Clear icon since we don't know what the toggled icon is and this way it will update
+      // // once we get the new state.
+      // attributes.icon = '';
       m.redraw();
     };
 
@@ -285,6 +279,11 @@ class Layout {
       thermostat = <Thermostat weatherEntity={weather} climateEntity={climate}></Thermostat>;
     }
 
+    let forecast = '';
+    if (weather) {
+      forecast = <WeatherForcast {...weather}></WeatherForcast>
+    }
+
     if (mediaPlayer && this.showPlaylistBrowser) {
       return <div class="thermostat">
         <PlaylistBrowser onExit={() => { this.toggleShowPlaylists() }} mediaPlayerId={mediaPlayer.entity_id}></PlaylistBrowser>
@@ -292,9 +291,8 @@ class Layout {
     }
 
     return <div>
-      <div class="thermostat">
-        {thermostat}
-      </div>
+      {thermostat}
+      {forecast}
       <div>
         {
           Entities.sensors.map((sensorData) => <Sensor {...sensorData}></Sensor>)

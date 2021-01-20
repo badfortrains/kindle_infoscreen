@@ -1,43 +1,9 @@
 import m from 'mithril';
 import { token, wifi, address, media_sources, groupname, refreshinterval } from './config.json';
 import { Icon } from './icon';
+import { iconFromState } from './weather_forcast';
 
 export class Thermostat {
-    iconFromState(state) {
-        switch (state) {
-            case 'clear-night':
-                return 'weather-clear-night';
-            case 'cloudy':
-                return 'weather-cloudy';
-            case 'fog':
-                return 'weather-fog';
-            case 'hail':
-                return 'weather-hail';
-            case 'lightning':
-                return 'weather-lightning';
-            case 'lightning - rainy':
-                return 'weather-lightning-raining';
-            case 'partlycloudy':
-                return 'weather-partlycloudy';
-            case 'pouring':
-                return 'weather-pouring';
-            case 'rainy':
-                return 'weather-rainy';
-            case 'snowy':
-                return 'weather-snowy';
-            case 'snowy - rainy':
-                return 'weather-snowy-rainy';
-            case 'sunny':
-                return 'weather-sunny';
-            case 'windy':
-                return 'weather-windy';
-            case 'windy - variant':
-                return 'weather-windy-variant';
-            case 'exceptional':
-                return 'weather-exceptional';
-        }
-    }
-
     enableHeat(climateEntity) {
         if (climateEntity.state !== 'off') {
             return;
@@ -64,7 +30,7 @@ export class Thermostat {
                 hvac_mode,
             },
         });
-        const idleHeat = climateEntity.attributes.temperature > climateEntity.attributes.current_temperature ? 'heat' : 'idle';
+        const idleHeat = climateEntity.attributes.temperature > climateEntity.attributes.current_temperature ? 'heating' : 'idle';
         const hvac_action = hvac_mode === 'off' ? 'off' : idleHeat;
         climateEntity.attributes.hvac_action = hvac_action;
         climateEntity.state = hvac_mode;
@@ -86,16 +52,29 @@ export class Thermostat {
     }
 
     view({ attrs: { climateEntity, weatherEntity } }) {
-        return <div>
-            <div class="climate-outside">
-                <Icon class="x-large" icon={this.iconFromState(weatherEntity.state)}></Icon>
+        const heatState = climateEntity.attributes.hvac_action === 'off' ? 'Heat off' :
+            climateEntity.attributes.hvac_action;
+        return <div class="thermostat section-container">
+            <div class="climate-outside float-left">
+                <Icon class="x-large" icon={iconFromState(weatherEntity.state)}></Icon>
                 <div class="climate-label">outside</div>
                 <div class="climate-temp">{weatherEntity.attributes.temperature}°</div>
                 <div class="climate-temp-sub-label">
                     Humidity {weatherEntity.attributes.humidity}%
-                </div>
+               </div>
             </div>
-            <div class="climate-inside">
+            <div class="climate-target float-right">
+                <button onclick={() => this.setTemp(climateEntity, 1)} class="m-icon-medium">
+                    <Icon icon="arrow-up-bold-circle-outline"></Icon>
+                </button>
+                <div class="climate-label">set to</div>
+                <div class="climate-temp">{climateEntity.attributes.temperature}°</div>
+                <div class="climate-temp-sub-label">{heatState}</div>
+                <button onclick={() => this.setTemp(climateEntity, -1)} class="m-icon-medium">
+                    <Icon icon="arrow-down-bold-circle-outline"></Icon>
+                </button>
+            </div>
+            <div class="climate-inside center">
                 <div class="climate-label">inside</div>
                 <div class="climate-temp">{climateEntity.attributes.current_temperature}°</div>
                 <div>
@@ -108,17 +87,6 @@ export class Thermostat {
                         <Icon icon="power"></Icon>
                     </button>
                 </div>
-            </div>
-            <div class="climate-target">
-                <button onclick={() => this.setTemp(climateEntity, 1)}>
-                    <div class="triangle-up"></div>
-                </button>
-                <div class="climate-label">set to</div>
-                <div class="climate-temp">{climateEntity.attributes.temperature}°</div>
-                <div class="climate-temp-sub-label">{climateEntity.attributes.hvac_action}</div>
-                <button onclick={() => this.setTemp(climateEntity, -1)}>
-                    <div class="triangle-down"></div>
-                </button>
             </div>
         </div>
     }

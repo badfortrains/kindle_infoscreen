@@ -1,21 +1,27 @@
 import {
     mdiWeatherCloudy, mdiAlertDecagram, mdiFire, mdiPower, mdiWeatherNight, mdiWeatherFog, mdiWeatherHail, mdiWeatherLightning, mdiWeatherLightningRainy, mdiWeatherPartlyCloudy,
     mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane,
-    mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff
+    mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff, mdiArrowUpBoldCircleOutline, mdiArrowDownBoldCircleOutline
 } from '@mdi/js';
 import m from 'mithril';
 
 export class Icon {
     view(vnode) {
+        const icon = this.getIcon(vnode.attrs.icon);
         return <div class="m-icon">
+            {icon === mdiAlertDecagram ? vnode.attrs.icon : ''}
             <svg viewBox="0 0 24 24" >
-                <path d={this.getIcon(vnode.attrs.icon)} />
+                <path d={icon} />
             </svg >
         </div >
     }
 
     getIcon(name) {
         switch (name) {
+            case 'arrow-up-bold-circle-outline':
+                return mdiArrowUpBoldCircleOutline;
+            case 'arrow-down-bold-circle-outline':
+                return mdiArrowDownBoldCircleOutline
             case 'blinds':
                 return mdiBlinds;
             case 'blinds-open':
