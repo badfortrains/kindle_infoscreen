@@ -11,6 +11,17 @@ const container = document.createElement('div');
 document.body.appendChild(errdiv);
 document.body.appendChild(container);
 
+/** 
+ * Set to true by doUpdate, makes it so local state changes are not overwritten
+ * if an update request is already in flight.
+*/
+let skipNextUpdate = false;
+
+export function doUpdate() {
+  m.redraw();
+  skipNextUpdate = true;
+}
+
 var Entities = {
   switches: [],
   lights: [],
@@ -25,6 +36,10 @@ var Entities = {
       url: `${address}/api/states`,
       headers: { authorization: 'Bearer ' + token },
     }).then((result) => {
+      if (skipNextUpdate) {
+        skipNextUpdate = false;
+        return;
+      }
       // document.getElementById('error').textContent = 'got result ...';
       // get entities of the watch group
       var entities = result.filter(({ entity_id }) => entity_id === `group.${groupname}`)[0]
@@ -160,7 +175,7 @@ class Switch {
       // // Clear icon since we don't know what the toggled icon is and this way it will update
       // // once we get the new state.
       // attributes.icon = '';
-      m.redraw();
+      doUpdate();
     };
 
     let switchIcon = '';
@@ -194,7 +209,7 @@ class Light {
           });
           Entities.lights.find((item) => item.entity_id === entity_id).state =
             state == 'on' ? 'off' : 'on';
-          m.redraw();
+          doUpdate();
         },
       },
       name
@@ -221,7 +236,7 @@ class Scene {
           });
           // for feedback, turn switch on until next update
           Entities.scenes.find((item) => item.entity_id === entity_id).state = 'on';
-          m.redraw();
+          doUpdate();
         },
       },
       name
@@ -235,7 +250,7 @@ class Overlay {
   }
   toggle() {
     this.visible = !this.visible;
-    m.redraw();
+    doUpdate();
   }
   view({ attrs: { label }, children }) {
     var style = {
@@ -266,7 +281,7 @@ class Layout {
 
   toggleShowPlaylists() {
     this.showPlaylistBrowser = !this.showPlaylistBrowser;
-    m.redraw();
+    doUpdate();
   }
 
   view() {

@@ -2,6 +2,7 @@ import m from 'mithril';
 import { token, wifi, address, media_sources, groupname, refreshinterval } from './config.json';
 import { Icon } from './icon';
 import { iconFromState } from './weather_forcast';
+import { doUpdate } from './index';
 
 export class Thermostat {
     enableHeat(climateEntity) {
@@ -48,7 +49,7 @@ export class Thermostat {
             },
         });
         climateEntity.attributes.temperature = newTemp;
-        m.redraw();
+        doUpdate();
     }
 
     view({ attrs: { climateEntity, weatherEntity } }) {
