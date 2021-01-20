@@ -12,6 +12,7 @@ export class PlaylistBrowser {
             data: {
                 device_name: 'House group',
                 random_song: true,
+                shuffle: true,
                 uri: playlistId,
             },
         });
