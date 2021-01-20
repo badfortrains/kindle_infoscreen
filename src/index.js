@@ -154,10 +154,6 @@ class Sensor {
 class Switch {
   view({ attrs: { attributes, entity_id, state } }) {
     const name = attributes.friendly_name || entity_id;
-    const switchStyle = {
-      'background-color': state == 'on' ? 'black' : 'white',
-      color: state == 'on' ? 'white' : 'black',
-    };
     const onclick = () => {
       m.request({
         method: 'POST',
@@ -167,10 +163,20 @@ class Switch {
       });
       Entities.switches.find((item) => item.entity_id === entity_id).state =
         state == 'on' ? 'off' : 'on';
+      // Clear icon since we don't know what the toggled icon is and this way it will update
+      // once we get the new state.
+      attributes.icon = '';
       m.redraw();
     };
-    return <div class="switch" style={switchStyle} onclick={onclick}>
+
+    let switchIcon = '';
+    if (attributes.icon) {
+      switchIcon = <Icon icon={attributes.icon.replace('mdi:', '')}></Icon>;
+    }
+
+    return <div class={state == 'on' ? 'switch' : 'switch inverted'} onclick={onclick}>
       {name}
+      {switchIcon}
     </div>
   }
 }

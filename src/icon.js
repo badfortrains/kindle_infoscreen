@@ -1,7 +1,7 @@
 import {
     mdiWeatherCloudy, mdiAlertDecagram, mdiFire, mdiPower, mdiWeatherNight, mdiWeatherFog, mdiWeatherHail, mdiWeatherLightning, mdiWeatherLightningRainy, mdiWeatherPartlyCloudy,
     mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane,
-    mdiArrowLeft
+    mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff
 } from '@mdi/js';
 import m from 'mithril';
 
@@ -16,6 +16,14 @@ export class Icon {
 
     getIcon(name) {
         switch (name) {
+            case 'blinds':
+                return mdiBlinds;
+            case 'blinds-open':
+                return mdiBlindsOpen;
+            case 'lightbulb-multiple':
+                return mdiLightbulbMultiple;
+            case 'lightbulb-multiple-off':
+                return mdiLightbulbMultipleOff;
             case 'fire':
                 return mdiFire;
             case 'power':

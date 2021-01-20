@@ -7,7 +7,7 @@ body {
   width: 600px;
 }
 .switch {
-  height: 140px;
+  height: 47px;
   width: 140px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -15,6 +15,19 @@ body {
   border: 1px solid black;
   margin: 20px;
   padding: 5px;
+}
+
+.inverted {
+  color: white;
+  background-color: black;
+}
+
+.inverted .m-icon path {
+  fill: #ffffff;
+}
+
+.switch .m-icon {
+  float: right;
 }
 
 .sensor {
