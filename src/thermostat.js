@@ -52,12 +52,14 @@ export class Thermostat {
         doUpdate();
     }
 
-    view({ attrs: { climateEntity, weatherEntity } }) {
+    view({ attrs: { climateEntity, weatherEntity, humidityEntity } }) {
         const heatState = climateEntity.attributes.hvac_action === 'off' ? 'Heat off' :
             climateEntity.attributes.hvac_action;
         return <div class="thermostat section-container">
             <div class="climate-outside float-left">
-                <Icon class="x-large" icon={iconFromState(weatherEntity.state)}></Icon>
+                <div class="box-80">
+                    <Icon class="x-large" icon={iconFromState(weatherEntity.state)}></Icon>
+                </div>
                 <div class="climate-label">outside</div>
                 <div class="climate-temp">{weatherEntity.attributes.temperature}°</div>
                 <div class="climate-temp-sub-label">
@@ -65,20 +67,25 @@ export class Thermostat {
                </div>
             </div>
             <div class="climate-target float-right">
-                <button onclick={() => this.setTemp(climateEntity, 1)} class="m-icon-medium temp-up">
-                    <Icon icon="arrow-up-bold-circle-outline"></Icon>
-                </button>
+                <div class="box-80">
+                    <button onclick={() => this.setTemp(climateEntity, 1)} class="m-icon-medium temp-up">
+                        <Icon icon="arrow-up-bold-circle-outline"></Icon>
+                    </button>
+                </div>
                 <div class="climate-label">set to</div>
                 <div class="climate-temp">{climateEntity.attributes.temperature}°</div>
                 <div class="climate-temp-sub-label">{heatState}</div>
-                <button onclick={() => this.setTemp(climateEntity, -1)} class="m-icon-medium temp-down">
+                <button onclick={() => this.setTemp(climateEntity, -1)} class="m-icon-medium temp-down climate-temp-sub-label-button">
                     <Icon icon="arrow-down-bold-circle-outline"></Icon>
                 </button>
             </div>
             <div class="climate-inside center">
                 <div class="climate-label">inside</div>
                 <div class="climate-temp">{climateEntity.attributes.current_temperature}°</div>
-                <div>
+                <div class="climate-temp-sub-label">
+                    Humidity {humidityEntity.state}%
+               </div>
+                <div class="climate-temp-sub-label-button">
                     <button onclick={() => this.enableHeat(climateEntity)}
                         style="margin-right: 16px"
                         class={climateEntity.state === 'off' ? 'disabled m-icon-medium ' : 'm-icon-medium '}>

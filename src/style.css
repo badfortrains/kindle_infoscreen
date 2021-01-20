@@ -169,28 +169,35 @@ body {
 
 .climate-label {
   font-size: 16px;
+  line-height: 18px;
   text-transform: uppercase;
 }
 
 .climate-temp {
   font-size: 55px;
+  line-height: 55px;
   font-weight: 300;
 }
 
 .climate-inside {
-  padding-top: 59px;
+  padding-top: 25px;
   width: 150px;
   padding-left: 50px;
 }
 .climate-inside .climate-temp {
-  font-size: 90px;
+  font-size: 110px;
   font-weight: 400;
-  line-height: 1em;
+  line-height: 110px;
 }
 
 .thermostat {
   position: relative;
   margin-bottom: 24px;
+}
+
+.box-80 {
+  height: 80px;
+  width: 80px;
 }
 
 .thermostat-status-bar {
@@ -238,9 +245,18 @@ button:focus {
   bottom: 5px;
 }
 
+.climate-target .climate-temp-sub-label {
+  padding-right: 24px;
+  text-align: center;
+}
+
 .climate-temp-sub-label {
-  font-size: 18px;
+  font-size: 16px;
   text-transform: capitalize;
+}
+
+.climate-temp-sub-label-button {
+  margin-top: 4px;
 }
 
 .playlist-item-first {
@@ -288,7 +304,7 @@ button:focus {
 }
 
 .forecast.float-right {
-  padding-left: 35px;
+  padding-left: 25px;
   border-left: 3px solid black;
 }
 
