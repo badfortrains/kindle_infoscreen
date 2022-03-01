@@ -2,7 +2,7 @@
 
 ![NPM Build](https://github.com/hermannsblum/kindle_infoscreen/workflows/Node.js%20CI/badge.svg)
 
-<img height="400em" src="https://raw.githubusercontent.com/hermannsblum/kindle_infoscreen/master/example.jpg" />
+<img height="400em" src="https://raw.githubusercontent.com/badfortrains/kindle_infoscreen/master/example.png" />
 
 **What?**
 Switch on and off devices, lights, or music in your house from a wall-mounted e-paper display.
