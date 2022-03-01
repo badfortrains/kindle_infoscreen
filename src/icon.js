@@ -2,7 +2,7 @@ import {
     mdiWeatherCloudy, mdiAlertDecagram, mdiFire, mdiPower, mdiWeatherNight, mdiWeatherFog, mdiWeatherHail, mdiWeatherLightning, mdiWeatherLightningRainy, mdiWeatherPartlyCloudy,
     mdiWeatherPouring, mdiWeatherRainy, mdiWeatherSnowy, mdiWeatherSnowyRainy, mdiWeatherSunny, mdiWeatherWindy, mdiWeatherWindyVariant, mdiWeatherHurricane,
     mdiArrowLeft, mdiBlinds, mdiBlindsOpen, mdiLightbulbMultiple, mdiLightbulbMultipleOff, mdiArrowUpBoldCircleOutline, mdiArrowDownBoldCircleOutline,
-    mdiTriangleOutline
+    mdiTriangleOutline, mdiFan, mdiFanOff
 } from '@mdi/js';
 import m from 'mithril';
 import {WEATHER_ICON_MAP} from './weather_svg'
@@ -49,6 +49,10 @@ export class Icon {
                 return mdiLightbulbMultiple;
             case 'lightbulb-multiple-off':
                 return mdiLightbulbMultipleOff;
+            case 'fan':
+                return mdiFan;
+            case 'fan-off':
+                return mdiFanOff;
             case 'fire':
                 return mdiFire;
             case 'power':
