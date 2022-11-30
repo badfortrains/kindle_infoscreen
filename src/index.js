@@ -279,6 +279,7 @@ class Layout {
   oninit() {
     Entities.loadEntities();
     this.showPlaylistBrowser = false;
+    setTimeout(() => window.location.reload(), 1000 * 60 * 10);
   }
 
   toggleShowPlaylists() {
