@@ -5,10 +5,8 @@ import { Icon } from './icon';
 import { Thermostat } from './thermostat'
 import { PlaylistBrowser } from './playlist_browser';
 import { WeatherForcast } from './weather_forcast';
-const errdiv = document.createElement('div');
 const container = document.createElement('div');
 
-document.body.appendChild(errdiv);
 document.body.appendChild(container);
 
 /** 
@@ -301,20 +299,25 @@ class Layout {
       forecast = <WeatherForcast {...weather}></WeatherForcast>
     }
 
+    let sensors = '';
+    if (Entities.sensors.length) {
+      sensors = <div>
+        {
+          Entities.sensors.map((sensorData) => <Sensor {...sensorData}></Sensor>)
+        }
+      </div>;
+    }
+
     if (mediaPlayer && this.showPlaylistBrowser) {
       return <div class="thermostat">
         <PlaylistBrowser onExit={() => { this.toggleShowPlaylists() }} mediaPlayerId={mediaPlayer.entity_id}></PlaylistBrowser>
       </div>
     }
 
-    return <div>
+    return <div class="main-container">
       {thermostat}
       {forecast}
-      <div>
-        {
-          Entities.sensors.map((sensorData) => <Sensor {...sensorData}></Sensor>)
-        }
-      </div>
+      {sensors}
       <div class="switch-row">
         {Entities.switches.map((switchData) => <Switch {...switchData}></Switch>)}
         {Entities.lights.map((lightData) => <Light {...lightData}></Light>)}

@@ -1,10 +1,24 @@
 html {
-  font-size: 15px;
+  font-size: 17px;
+  height: 100%;
 }
 
 body {
   font-family: sans-serif;
-  margin: .8rem;
+  height: 100%;
+  margin: 0;
+}
+body>div{
+    height: 100%;
+}
+
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .switch-row {
@@ -19,7 +33,6 @@ body {
   font-size: 2rem;
   float: left;
   border: .1rem solid black;
-  margin: 1.5rem;
   padding: .5rem;
   position: relative;
 }
@@ -35,11 +48,6 @@ body {
 
 .float-right {
   float: right;
-}
-
-.center {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .not-inverted {
@@ -81,7 +89,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
   border: .1rem solid black;
-  margin: 1.6rem 1.6rem 3.2rem 1.6rem;
   padding: .5rem 18.5rem .5rem .5rem;
   overflow: hidden;
 }
@@ -161,13 +168,14 @@ body {
 }
 
 .disabled .m-icon path {
-  fill: #b9b7b7;
+  fill: #7c7c7c;
 }
 
 .section-container {
-  margin-left: 1.6rem;
-  margin-right: 1.6rem;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .climate-label {
@@ -182,11 +190,6 @@ body {
   font-weight: 300;
 }
 
-.climate-inside {
-  padding-top: 2.5rem;
-  width: 15rem;
-  padding-left: 5rem;
-}
 .climate-inside .climate-temp {
   font-size: 11rem;
   font-weight: 400;
@@ -195,12 +198,6 @@ body {
 
 .thermostat {
   position: relative;
-  margin-bottom: 2.4rem;
-}
-
-.box-80 {
-  height: 8rem;
-  width: 8rem;
 }
 
 .thermostat-status-bar {
@@ -239,12 +236,7 @@ button:focus {
 }
 
 .climate-target button.temp-up {
-  height: 8rem;
-  position: relative;
-}
-
-.climate-target .temp-down {
-  top: -.7rem;
+  height: 5rem;
   position: relative;
 }
 
@@ -266,6 +258,8 @@ button:focus {
 .climate-temp-sub-label-button {
   margin-top: .4rem;
 }
+
+..climate-temp-sub-label-button.
 
 .playlist-item-first {
   margin-right: 1.6rem;
@@ -296,12 +290,7 @@ button:focus {
   position: relative;
 }
 
-.weather-forecast {
-  margin-bottom: 2.4rem;
-}
-
 .forecast.center {
-  padding-left: 6rem;
   width: 16rem;
   position: relative;
 }

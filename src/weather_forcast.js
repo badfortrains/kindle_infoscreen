@@ -77,11 +77,10 @@ export class WeatherForcast {
                 </div>
             </div>)
         return <div class="weather-forecast section-container">
-            <div class="forecast float-left">{days[0]}</div>
-            <div class="forecast float-right">{days[2]}</div>
-            <div class="forecast center">
-                {days[1]}
-            </div>
+            <div class="forecast">{days[0]}</div>
+            <div class="forecast center">{days[1]}</div>
+            <div class="forecast">{days[2]}</div>
+
         </div>
     }
 }
