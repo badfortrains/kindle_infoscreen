@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode=development --hot --inline",
+    "start": "webpack serve --mode=development --hot --inline --host 0.0.0.0",
     "build": "webpack --config webpack.config.prod.js",
     "lint": "eslint src/*.js ./*.js",
     "lint-fix": "eslint --fix src/*.js ./*.js"

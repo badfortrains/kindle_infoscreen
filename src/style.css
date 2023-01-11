@@ -1,21 +1,26 @@
+html {
+  font-size: 15px;
+}
+
 body {
   font-family: sans-serif;
-  max-width: 600px;
+  margin: .8rem;
 }
 
 .switch-row {
   overflow: auto;
-  width: 600px;
+  display: flex;
+  justify-content: space-between;
 }
 .switch {
-  height: 90px;
-  width: 140px;
+  height: 9rem;
+  width: 14rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 2rem;
   float: left;
-  border: 1px solid black;
-  margin: 16px;
-  padding: 5px;
+  border: .1rem solid black;
+  margin: 1.5rem;
+  padding: .5rem;
   position: relative;
 }
 
@@ -50,19 +55,18 @@ body {
   position: absolute;
   right: 0px;
   bottom: 0px;
-  padding: 5px;
-  width: 36px;
-  height: 36px;
+  padding: .5rem;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 
 .sensor {
-  height: 40px;
-  line-height: 40px;
-  width: 530px;
+  height: 4rem;
+  line-height: 4rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  margin: 0px 16px 0px 16px;
-  padding: 5px;
+  font-size: 2rem;
+  margin: 0px 1.6rem 0px 1.6rem;
+  padding: .5rem;
 }
 .sensorname {
   float: left;
@@ -72,89 +76,88 @@ body {
 }
 
 .media_player {
-  height: 140px;
+  height: 14rem;
   position: relative;
-  width: 345px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  border: 1px solid black;
-  margin: 16px 16px 32px 16px;
-  padding: 5px 185px 5px 5px;
+  font-size: 2rem;
+  border: .1rem solid black;
+  margin: 1.6rem 1.6rem 3.2rem 1.6rem;
+  padding: .5rem 18.5rem .5rem .5rem;
   overflow: hidden;
 }
 
 .media-player-metadata {
-  margin-left: 16px;
+  margin-left: 1.6rem;
 }
 .media-player-artist {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .media-player-song {
-  font-size: 22px;
+  font-size: 2.2rem;
 }
 .media_player img {
-  height: 140px;
-  width: 140px;
+  height: 14rem;
+  width: 14rem;
   float: left;
-  margin-right: 16px;
+  margin-right: 1.6rem;
 }
 
 .media-play-playlist-section {
-  width: 180px;
+  width: 18rem;
   height: 100%;
   position: absolute;
   right: 0px;
   top: 0px;
-  font-size: 24px;
+  font-size: 2.4rem;
   text-align: center;
 }
 
 .media-play-playlist-section .playlist-button {
   position: relative;
-  top: 61px;
+  top: 6.1rem;
 }
 
 .overlaybutton {
-  margin: 20px;
-  padding: 5px;
-  height: 40px;
-  width: 140px;
+  margin: 2rem;
+  padding: .5rem;
+  height: 4rem;
+  width: 14rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  border: 1px solid black;
+  font-size: 2rem;
+  border: .1rem solid black;
 }
 
 .wifi {
-  margin: 20px;
+  margin: 2rem;
 }
 
 .triangle-up {
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 40px solid #555;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 4rem solid #555;
 }
 
 .triangle-down {
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 40px solid #555;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-top: 4rem solid #555;
 }
 
 .m-icon {
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
 }
 
 .m-icon-medium .m-icon {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
+  line-height: 4.4rem;
 }
 
 .disabled .m-icon path {
@@ -162,48 +165,48 @@ body {
 }
 
 .section-container {
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
   overflow: hidden;
 }
 
 .climate-label {
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
   text-transform: uppercase;
 }
 
 .climate-temp {
-  font-size: 55px;
-  line-height: 55px;
+  font-size: 5.5rem;
+  line-height: 5.5rem;
   font-weight: 300;
 }
 
 .climate-inside {
-  padding-top: 25px;
-  width: 150px;
-  padding-left: 50px;
+  padding-top: 2.5rem;
+  width: 15rem;
+  padding-left: 5rem;
 }
 .climate-inside .climate-temp {
-  font-size: 110px;
+  font-size: 11rem;
   font-weight: 400;
-  line-height: 110px;
+  line-height: 11rem;
 }
 
 .thermostat {
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 2.4rem;
 }
 
 .box-80 {
-  height: 80px;
-  width: 80px;
+  height: 8rem;
+  width: 8rem;
 }
 
 .thermostat-status-bar {
   position: absolute;
-  top: 177px;
-  right: 193px;
+  top: 17.7rem;
+  right: 19.3rem;
 }
 
 .climate-inside button {
@@ -211,9 +214,9 @@ body {
 }
 
 .climate-outside .m-icon {
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
+  width: 8rem;
+  height: 8rem;
+  line-height: 8rem;
 }
 
 button {
@@ -236,81 +239,81 @@ button:focus {
 }
 
 .climate-target button.temp-up {
-  height: 80px;
+  height: 8rem;
   position: relative;
 }
 
 .climate-target .temp-down {
-  top: -7px;
+  top: -.7rem;
   position: relative;
 }
 
 .climate-target button.temp-up .m-icon {
   position: absolute;
-  bottom: 5px;
+  bottom: .5rem;
 }
 
 .climate-target .climate-temp-sub-label {
-  padding-right: 24px;
+  padding-right: 2.4rem;
   text-align: center;
 }
 
 .climate-temp-sub-label {
-  font-size: 16px;
+  font-size: 1.6rem;
   text-transform: capitalize;
 }
 
 .climate-temp-sub-label-button {
-  margin-top: 4px;
+  margin-top: .4rem;
 }
 
 .playlist-item-first {
-  margin-right: 16px;
+  margin-right: 1.6rem;
 }
 
 .playlist-item {
   position: relative;
-  width: 260px;
-  height: 200px;
-  border: 1px solid gray;
+  width: 26rem;
+  height: 20rem;
+  border: .1rem solid gray;
   display: inline-block;
-  margin-bottom: 16px;
-  padding: 8px;
+  margin-bottom: 1.6rem;
+  padding: .8rem;
   overflow: hidden;
   vertical-align: top;
 }
 
 .playlist-item img {
-  padding-right: 4px;
-  width: 30px;
-  height: 30px;
+  padding-right: .4rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .playlist-item-title {
-  top: 44px;
-  font-size: 30px;
+  top: 4.4rem;
+  font-size: 3rem;
   text-align: center;
   position: relative;
 }
 
 .weather-forecast {
-  margin-bottom: 24px;
+  margin-bottom: 2.4rem;
 }
 
 .forecast.center {
-  padding-left: 60px;
-  width: 160px;
+  padding-left: 6rem;
+  width: 16rem;
   position: relative;
 }
 
 .forecast.float-left {
-  padding-right: 45px;
-  border-right: 3px solid black;
+  padding-right: 4.5rem;
+  border-right: .3rem solid black;
 }
 
 .forecast.float-right {
-  padding-left: 25px;
-  border-left: 3px solid black;
+  padding-left: 2.5rem;
+  border-left: .3rem solid black;
 }
 
 .forecast {
@@ -318,27 +321,27 @@ button:focus {
 }
 
 .forecast .m-icon {
-  width: 72px;
-  height: 72px;
-  line-height: 72px;
+  width: 7.2rem;
+  height: 7.2rem;
+  line-height: 7.2rem;
 }
 
 .forecast-divider {
-  border-right: 3px solid black;
-  margin-right: 33px;
+  border-right: 3rem solid black;
+  margin-right: 3.3rem;
 }
 
 .forecast-day-title {
-  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 .forecast-temp-title {
-  font-size: 18px;
+  font-size: 1.8rem;
   text-align: left;
 }
 
 .forecast-temp {
-  font-size: 28px;
+  font-size: 2.8rem;
 }
 
 .forecast-low {
