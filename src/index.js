@@ -43,7 +43,7 @@ var Entities = {
       var entities = result.filter(({ entity_id }) => entity_id === `group.${groupname}`)[0]
         .attributes.entity_id;
       // get the states of these entities
-      Entities.humidity = result.find(({ entity_id }) => entity_id === 'sensor.0x00158d00051e3ef0_humidity');
+      Entities.humidity = result.find(({ entity_id }) => entity_id === 'sensor.dinning_room_temp_humidity');
 
       Entities.switches = [];
       entities
