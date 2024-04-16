@@ -290,11 +290,6 @@ button:focus {
   position: relative;
 }
 
-.forecast.center {
-  width: 16rem;
-  position: relative;
-}
-
 .forecast.float-left {
   padding-right: 4.5rem;
   border-right: .3rem solid black;

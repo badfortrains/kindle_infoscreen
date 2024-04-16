@@ -27,6 +27,7 @@ var Entities = {
   sensors: [],
   media_players: [],
   climate: [],
+  forecast: [],
   weather: [],
   loadEntities: function () {
     // document.getElementById('error').textContent = 'loading...';
@@ -65,7 +66,7 @@ var Entities = {
         });
       Entities.sensors = [];
       entities
-        .filter((entity_id) => entity_id.startsWith('sensor'))
+        .filter((entity_id) => entity_id.startsWith('sensor') && !entity_id.includes('weather'))
         .forEach((entity_id) => {
           Entities.sensors.push(result.filter((item) => item.entity_id == entity_id)[0]);
         });
@@ -80,6 +81,12 @@ var Entities = {
         .filter((entity_id) => entity_id.startsWith('climate'))
         .forEach((entity_id) => {
           Entities.climate.push(result.filter((item) => item.entity_id == entity_id)[0]);
+        });
+      Entities.forecast = [];
+      entities
+        .filter((entity_id) => entity_id.includes('forecast'))
+        .forEach((entity_id) => {
+          Entities.forecast.push(result.filter((item) => item.entity_id == entity_id)[0]);
         });
       Entities.weather = [];
       entities
@@ -286,6 +293,7 @@ class Layout {
 
   view() {
     const weather = Entities.weather[0];
+    const forecastEntity = Entities.forecast[0];
     const climate = Entities.climate[0];
     const mediaPlayer = Entities.media_players[0];
 
@@ -296,7 +304,7 @@ class Layout {
 
     let forecast = '';
     if (weather) {
-      forecast = <WeatherForcast {...weather}></WeatherForcast>
+      forecast = <WeatherForcast {...forecastEntity}></WeatherForcast>
     }
 
     let sensors = '';
